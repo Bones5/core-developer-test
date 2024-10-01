@@ -122,3 +122,106 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+
+/**
+ * Register Event Custom Post Type
+ *
+ * @return void
+ */
+
+add_action( 'init', function() {
+
+	$labels = array(
+		'name'                  => _x( 'Events', 'Post Type General Name', 'sage' ),
+		'singular_name'         => _x( 'Event', 'Post Type Singular Name', 'sage' ),
+		'menu_name'             => __( 'Events', 'sage' ),
+		'name_admin_bar'        => __( 'Event', 'sage' ),
+		'archives'              => __( 'Item Archives', 'sage' ),
+		'attributes'            => __( 'Item Attributes', 'sage' ),
+		'parent_item_colon'     => __( 'Parent Item:', 'sage' ),
+		'all_items'             => __( 'All Items', 'sage' ),
+		'add_new_item'          => __( 'Add New Item', 'sage' ),
+		'add_new'               => __( 'Add New', 'sage' ),
+		'new_item'              => __( 'New Item', 'sage' ),
+		'edit_item'             => __( 'Edit Item', 'sage' ),
+		'update_item'           => __( 'Update Item', 'sage' ),
+		'view_item'             => __( 'View Item', 'sage' ),
+		'view_items'            => __( 'View Items', 'sage' ),
+		'search_items'          => __( 'Search Item', 'sage' ),
+		'not_found'             => __( 'Not found', 'sage' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'sage' ),
+		'featured_image'        => __( 'Featured Image', 'sage' ),
+		'set_featured_image'    => __( 'Set featured image', 'sage' ),
+		'remove_featured_image' => __( 'Remove featured image', 'sage' ),
+		'use_featured_image'    => __( 'Use as featured image', 'sage' ),
+		'insert_into_item'      => __( 'Insert into item', 'sage' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'sage' ),
+		'items_list'            => __( 'Items list', 'sage' ),
+		'items_list_navigation' => __( 'Items list navigation', 'sage' ),
+		'filter_items_list'     => __( 'Filter items list', 'sage' ),
+	);
+	$args = array(
+		'label'                 => __( 'Event', 'sage' ),
+		'description'           => __( 'Events for this website', 'sage' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor' , 'thumbnail' ),
+		'taxonomies'            => array( 'category', 'post_tag' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'event', $args );
+
+}, 0 );
+
+/**
+ * Register Event Custom Taxonomy
+ *
+ * @return void
+ */
+add_action( 'init', function () {
+
+	$labels = array(
+		'name'                       => _x( 'Event Categories', 'Taxonomy General Name', 'sage' ),
+		'singular_name'              => _x( 'Event Category', 'Taxonomy Singular Name', 'sage' ),
+		'menu_name'                  => __( 'Category', 'sage' ),
+		'all_items'                  => __( 'All Categories', 'sage' ),
+		'parent_item'                => __( 'Parent Category', 'sage' ),
+		'parent_item_colon'          => __( 'Parent Category:', 'sage' ),
+		'new_item_name'              => __( 'New Category Name', 'sage' ),
+		'add_new_item'               => __( 'Add New Category', 'sage' ),
+		'edit_item'                  => __( 'Edit Category', 'sage' ),
+		'update_item'                => __( 'Update Category', 'sage' ),
+		'view_item'                  => __( 'View Category', 'sage' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'sage' ),
+		'add_or_remove_items'        => __( 'Add or remove items', 'sage' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'sage' ),
+		'popular_items'              => __( 'Popular Categories', 'sage' ),
+		'search_items'               => __( 'Search Categories', 'sage' ),
+		'not_found'                  => __( 'Not Found', 'sage' ),
+		'no_terms'                   => __( 'No items', 'sage' ),
+		'items_list'                 => __( 'Categories list', 'sage' ),
+		'items_list_navigation'      => __( 'Categories list navigation', 'sage' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'event_category', array( 'event' ), $args );
+
+}, 0 );
