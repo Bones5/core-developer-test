@@ -31,8 +31,14 @@ class Event extends Composer
         $start_date = get_field('start_date_and_time');
         $end_date = get_field('end_date_and_time');
 
-        if ($start_date == $end_date) {
-            return $start_date;
+        if(!$start_date || !$end_date) {
+            return;
+        };
+
+        $single_day_event = date("Y-m-d", strToTime($start_date)) === date("Y-m-d", strToTime($end_date));
+
+        if ($single_day_event) {
+            return $start_date . ' - ' . date("g:i a", strToTime($end_date));
         }
 
 
