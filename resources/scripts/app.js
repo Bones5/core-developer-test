@@ -1,10 +1,11 @@
 import domReady from '@roots/sage/client/dom-ready';
+import { eventListScrollEffect } from './eventListScrollEffect';
 
 /**
  * Application entrypoint
  */
 domReady(async () => {
-  // ...
+  eventListScrollEffect();
 });
 
 /**

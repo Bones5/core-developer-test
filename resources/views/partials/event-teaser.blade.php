@@ -1,4 +1,4 @@
-<li class="list-item transform transition duration-800" >
+<li class="list-item transform transition duration-1000 opacity-0 translate-y-8" >
     <article>
     <a href=@php(the_permalink()) >
 
