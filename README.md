@@ -3,7 +3,7 @@ Roots.io Sage theme
 Test Started : 15:21 01/10/24
 Test Finished: 17:22 01/10/24
 
-I've just about managed to cover everything.
+I've just about managed to cover everything, I had intended to go back and edit the event partial to use smaller size image, srcset and alt but I ran out of time.
 
 Working in a new framework made the timeframe a little challenging, I'm not sure I have followed best practices with Roots/Sage but I made my decisions to work within the time constraints.
 
